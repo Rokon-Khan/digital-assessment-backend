@@ -7,7 +7,8 @@ import {
 import { storeOTP, verifyOTP } from "../services/otpService.js";
 import { UserModel } from "../user/user.model";
 import { generateOTP } from "../utils/generateOTP.js";
-import { hashPassword } from "../utils/hashPassword.js";
+// import { hashPassword } from "../utils/hashPassword.js";
+import { hashPassword } from "../../config/hashPassword.js";
 import {
   loginSchema,
   otpSchema,
