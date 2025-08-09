@@ -1,3 +1,5 @@
+import { Types } from "mongoose";
+
 export type UserRole = "admin" | "student" | "supervisor";
 export type CompetencyLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
 export type AssessmentStep = 1 | 2 | 3;
@@ -34,7 +36,7 @@ export interface IQuestion {
 
 export interface IAssessmentAttempt {
   _id: string;
-  user: string;
+  user: Types.ObjectId;
   step: AssessmentStep;
   startedAt: Date;
   submittedAt?: Date;
@@ -54,7 +56,7 @@ export interface IAssessmentAttempt {
 
 export interface ICertificate {
   _id: string;
-  user: string;
+  user: Types.ObjectId;
   level: CompetencyLevel;
   issuedAt: Date;
   serialNumber: string;
