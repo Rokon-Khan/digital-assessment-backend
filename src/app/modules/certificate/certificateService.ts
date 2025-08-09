@@ -1,6 +1,5 @@
-// import { CertificateModel } from '../models/Certificate.model.js';
 import { nanoid } from "nanoid";
-import { generateCertificatePDF } from "../utils/generateCertificatePDF.js";
+import { generateCertificatePDF } from "../../utils/generateCertificatePDF";
 import { CertificateModel } from "./certificate.model";
 
 export async function issueCertificate(
