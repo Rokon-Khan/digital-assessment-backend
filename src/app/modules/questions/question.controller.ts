@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import {
   createQuestionSchema,
   updateQuestionSchema,
-} from "../validators/question.validator";
+} from "../../validators/question.validator";
 import { QuestionModel } from "./questions.model";
 
 export class QuestionController {

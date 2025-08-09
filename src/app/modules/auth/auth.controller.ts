@@ -15,7 +15,7 @@ import {
   registerSchema,
   resendOtpSchema,
   resetPasswordSchema,
-} from "../validators/auth.validator.js";
+} from "../../validators/auth.validator.js";
 import {
   generateAccessToken,
   generateRefreshToken,
