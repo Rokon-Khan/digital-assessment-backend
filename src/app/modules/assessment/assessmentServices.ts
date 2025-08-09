@@ -1,7 +1,7 @@
+import { evaluateStep, levelsForStep } from "../../utils/assessmentRules";
+import { calculateScore } from "../../utils/calculateScore";
 import { QuestionModel } from "../questions/questions.model";
 import { UserModel } from "../user/user.model";
-import { evaluateStep, levelsForStep } from "../utils/assessmentRules.js";
-import { calculateScore } from "../utils/calculateScore.js";
 import { AssessmentAttemptModel } from "./assessmentAttempt.model";
 
 export async function startAssessment(userId: string) {

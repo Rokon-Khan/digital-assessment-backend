@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-import { IAssessmentAttempt } from "../../app/types/interfaces";
+import { IAssessmentAttempt } from "../../types/interfaces";
 
 const attemptSchema = new Schema<IAssessmentAttempt>(
   {
