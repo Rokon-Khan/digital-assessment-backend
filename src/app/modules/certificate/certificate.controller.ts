@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { sendCertificateEmail } from "../services/emailService.js";
+import { sendCertificateEmail } from "../../services/emailService.js";
 import { UserModel } from "../user/user.model.js";
 import { issueCertificate } from "./certificateService.js";
 

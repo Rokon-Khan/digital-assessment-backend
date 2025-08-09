@@ -1,14 +1,10 @@
 import { Request, Response } from "express";
-// import { UserModel } from "../models/User.model.js";
+import { hashPassword } from "../../config/hashPassword.js";
 import {
   sendEmailVerification,
   sendPasswordResetOTP,
-} from "../services/emailService.js";
-import { storeOTP, verifyOTP } from "../services/otpService.js";
-import { UserModel } from "../user/user.model";
-import { generateOTP } from "../utils/generateOTP.js";
-// import { hashPassword } from "../utils/hashPassword.js";
-import { hashPassword } from "../../config/hashPassword.js";
+} from "../../services/emailService";
+import { generateOTP } from "../../utils/generateOTP.js";
 import {
   loginSchema,
   otpSchema,
@@ -16,6 +12,9 @@ import {
   resendOtpSchema,
   resetPasswordSchema,
 } from "../../validators/auth.validator.js";
+import { storeOTP, verifyOTP } from "../otp/otpService";
+import { UserModel } from "../user/user.model";
+
 import {
   generateAccessToken,
   generateRefreshToken,
@@ -23,7 +22,6 @@ import {
   rotateRefreshToken,
   validatePassword,
 } from "./authService";
-// import { verifyPassword } from '../utils/verifyPassword.js';
 
 export class AuthController {
   static async register(req: Request, res: Response) {

@@ -1,11 +1,16 @@
 // import { UserModel } from '../models/User.model.js';
 import crypto from "node:crypto";
-import { signToken } from "../config/jwt.js";
+// import { signToken } from "../config/jwt.js";
 import { UserModel } from "../user/user.model.js";
-import { generateOTP } from "../utils/generateOTP.js";
-import { hashPassword } from "../utils/hashPassword.js";
-import { verifyPassword } from "../utils/verifyPassword.js";
-import { storeOTP } from "./otpService.js";
+// import { generateOTP } from "../utils/generateOTP.js";
+// import { hashPassword } from "../utils/hashPassword.js";
+// import { verifyPassword } from "../utils/verifyPassword.js";
+// import { storeOTP } from "./otpService.js";
+import { hashPassword } from "../../config/hashPassword.js";
+import { signToken } from "../../config/jwt.js";
+import { generateOTP } from "../../utils/generateOTP.js";
+import { verifyPassword } from "../../utils/verifyPassword.js";
+import { storeOTP } from "../otp/otpService.js";
 
 export async function registerUser(
   email: string,
@@ -49,7 +54,7 @@ export function generateAccessToken(user: any) {
       tokenVersion: user.tokenVersion,
     },
     process.env.JWT_ACCESS_SECRET!,
-    { expiresIn: process.env.JWT_ACCESS_EXPIRES || "15m" }
+    { expiresIn: Number(process.env.JWT_ACCESS_EXPIRES) ?? "1h" }
   );
 }
 
@@ -62,7 +67,7 @@ export function generateRefreshToken(user: any, overrideVersion?: number) {
       tokenVersion: overrideVersion ?? user.tokenVersion,
     },
     process.env.JWT_REFRESH_SECRET!,
-    { expiresIn: process.env.JWT_REFRESH_EXPIRES || "7d" }
+    { expiresIn: Number(process.env.JWT_REFRESH_EXPIRES) ?? "1d" }
   );
 }
 
