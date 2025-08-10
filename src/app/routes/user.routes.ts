@@ -5,10 +5,10 @@ import { UserController } from "../modules/user/user.controller";
 
 export const userRouter = Router();
 
-userRouter.get("/me", authenticateAccess, UserController.me);
-userRouter.put("/me", authenticateAccess, UserController.updateMe);
+userRouter.get("/users/me", authenticateAccess, UserController.me);
+userRouter.put("/users/me", authenticateAccess, UserController.updateMe);
 
-// Admin
+// Admin management
 userRouter.get(
   "/admin/users",
   authenticateAccess,
@@ -26,4 +26,10 @@ userRouter.delete(
   authenticateAccess,
   requireRole("admin"),
   UserController.deleteUser
+);
+userRouter.patch(
+  "/admin/users/:id/approve-supervisor",
+  authenticateAccess,
+  requireRole("admin"),
+  UserController.approveSupervisor
 );

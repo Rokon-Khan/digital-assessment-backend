@@ -1,10 +1,13 @@
 import { NextFunction, Request, Response } from "express";
-import { verifyToken } from "../config/jwt.js";
+import { verifyToken } from "../config/jwt";
 
 declare global {
   namespace Express {
     interface Request {
-      user?: { sub: string };
+      user?: {
+        [x: string]: string;
+        sub: string;
+      };
     }
   }
 }

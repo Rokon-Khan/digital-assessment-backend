@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { UserRole } from "../types/interfaces.js";
+import { UserRole } from "../types/interfaces";
 
 export function requireRole(...roles: UserRole[]) {
   return (req: Request, res: Response, next: NextFunction) => {

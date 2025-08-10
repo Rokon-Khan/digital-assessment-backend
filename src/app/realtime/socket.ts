@@ -1,5 +1,5 @@
 import { Server } from "socket.io";
-import { verifyToken } from "../config/jwt.js";
+import { verifyToken } from "../config/jwt";
 import { AssessmentAttemptModel } from "../modules/assessment/assessmentAttempt.model";
 // import { AssessmentAttemptModel } from '../models/AssessmentAttempt.model.js';
 

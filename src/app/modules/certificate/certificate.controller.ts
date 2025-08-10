@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { sendCertificateEmail } from "../../services/emailService.js";
-import { UserModel } from "../user/user.model.js";
-import { issueCertificate } from "./certificateService.js";
+import { sendCertificateEmail } from "../../services/emailService";
+import { UserModel } from "../user/user.model";
+import { issueCertificate } from "./certificateService";
 
 export class CertificateController {
   static async generate(req: Request, res: Response) {

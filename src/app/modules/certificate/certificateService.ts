@@ -1,4 +1,4 @@
-import { nanoid } from "nanoid";
+// import { nanoid } from "nanoid";
 import { generateCertificatePDF } from "../../utils/generateCertificatePDF";
 import { CertificateModel } from "./certificate.model";
 
@@ -7,6 +7,7 @@ export async function issueCertificate(
   email: string,
   level: string
 ) {
+  const { nanoid } = await import("nanoid");
   // Avoid duplicates at same level
   const existing = await CertificateModel.findOne({ user: userId, level });
   if (existing) return existing;

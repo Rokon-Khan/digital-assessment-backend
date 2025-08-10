@@ -10,15 +10,19 @@ export interface IUser {
   passwordHash: string;
   role: UserRole;
   isEmailVerified: boolean;
+  // Approval flags
+  supervisorApproved?: boolean; // true only after admin approval
+  studentApproved?: boolean; // students auto-approved at registration
   otpVersion: number;
   tokenVersion: number;
-  currentLevel?: CompetencyLevel; // highest achieved
+  currentLevel?: CompetencyLevel;
   createdAt: Date;
   updatedAt: Date;
-  refreshTokens?: string[]; // hashed (optional if using rotation)
+  refreshTokens?: string[];
   profile?: {
-    name?: string;
+    name: string;
     avatarUrl?: string;
+    phone?: string;
   };
 }
 

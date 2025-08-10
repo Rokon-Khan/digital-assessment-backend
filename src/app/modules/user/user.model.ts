@@ -9,15 +9,19 @@ const userSchema = new Schema<IUser>(
       type: String,
       enum: ["admin", "student", "supervisor"],
       default: "student",
+      index: true,
     },
     isEmailVerified: { type: Boolean, default: false },
+    supervisorApproved: { type: Boolean, default: false },
+    studentApproved: { type: Boolean, default: true }, // always true for students
     otpVersion: { type: Number, default: 0 },
     tokenVersion: { type: Number, default: 0 },
     currentLevel: { type: String, enum: ["A1", "A2", "B1", "B2", "C1", "C2"] },
     refreshTokens: [{ type: String }],
     profile: {
-      name: String,
+      name: { type: String, required: true },
       avatarUrl: String,
+      phone: String,
     },
   },
   { timestamps: true }

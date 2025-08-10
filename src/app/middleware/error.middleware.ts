@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { ZodError } from "zod";
-import { logger } from "../config/logger.js";
+import { logger } from "../config/logger";
 
 export function notFoundHandler(req: Request, res: Response) {
   res.status(404).json({ error: "Not Found" });

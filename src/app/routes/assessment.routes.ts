@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { authenticateAccess } from "../middleware/auth.middleware.js";
-import { requireRole } from "../middleware/role.middleware.js";
+import { authenticateAccess } from "../middleware/auth.middleware";
+import { requireRole } from "../middleware/role.middleware";
 import { AssessmentController } from "../modules/assessment/assessment.controller";
 
 export const assessmentRouter = Router();
