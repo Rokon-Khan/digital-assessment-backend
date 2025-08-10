@@ -196,8 +196,9 @@ export class AuthController {
     res.json({
       accessToken,
       refreshToken,
+      role: user.role,
       supervisorApproved:
-        user.role !== "supervisor" ? true : user.supervisorApproved || false,
+        user.role === "supervisor" ? !!user.supervisorApproved : undefined,
     });
   }
 

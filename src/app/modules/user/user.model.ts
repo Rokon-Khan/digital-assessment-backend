@@ -12,7 +12,8 @@ const userSchema = new Schema<IUser>(
       index: true,
     },
     isEmailVerified: { type: Boolean, default: false },
-    supervisorApproved: { type: Boolean, default: false },
+    // Only meaningful for supervisors; leave undefined for students/admin
+    supervisorApproved: { type: Boolean },
     studentApproved: { type: Boolean, default: true }, // always true for students
     otpVersion: { type: Number, default: 0 },
     tokenVersion: { type: Number, default: 0 },

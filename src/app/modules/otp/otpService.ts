@@ -1,22 +1,23 @@
 import { getRedis } from "../../config/redis";
 
-function key(email: string, purpose: string) {
+function key(email: string, purpose: string): string {
   return `otp:${purpose}:${email.toLowerCase()}`;
 }
 
 export async function storeOTP(
   email: string,
-  purpose: string,
+  purpose: "email_verification" | "password_reset",
   otp: string,
   ttlSec: number
-) {
+): Promise<void> {
   const redis = getRedis();
-  await redis.set(key(email, purpose), otp, "EX", ttlSec);
+  // node-redis v4 automatically returns a promise
+  await redis.set(key(email, purpose), otp, { EX: ttlSec });
 }
 
 export async function verifyOTP(
   email: string,
-  purpose: string,
+  purpose: "email_verification" | "password_reset",
   otp: string
 ): Promise<boolean> {
   const redis = getRedis();
@@ -28,9 +29,9 @@ export async function verifyOTP(
 }
 
 export async function resendAllowed(
-  email: string,
-  purpose: string
+  _email: string,
+  _purpose: string
 ): Promise<boolean> {
-  // Could implement rate-limiting logic per purpose.
+  // Implement rate-limiting if needed using INCR + EX
   return true;
 }
